@@ -17,7 +17,7 @@ aws sns subscribe \
 	--notification-endpoint $2
 
 # Step three: 
-# create credentials 
+# create cloudwatch alarm
 aws cloudwatch put-metric-alarm \
 	--alarm-name $1 \
 	--alarm-description "Stop the instance when it is idle for one hour" \
