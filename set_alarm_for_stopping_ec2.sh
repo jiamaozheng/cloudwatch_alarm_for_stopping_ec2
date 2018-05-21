@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# usages: bash set_alarm_for_ec2.sh <alarm name> <email address> <instance_id> 
+# usages: bash set_alarm_for_ec2.sh <iam-user-name> <email-address> <ec2-instance_id> 
 
 # Step one: 
 # Create the topic using the create-topic command
@@ -19,7 +19,7 @@ aws sns subscribe \
 # Step three: 
 # create cloudwatch alarm
 aws cloudwatch put-metric-alarm \
-	--alarm-name $1 \
+	--alarm-name $1-EC2StopAlarm \
 	--alarm-description "Stop the instance when it is idle for one hour" \
 	--namespace "AWS/EC2" \
 	--dimensions Name=InstanceId,Value=$3 \
